@@ -57,14 +57,9 @@
 
 <template>
   <div class="container">
-    <Cabecalho :tarefas-pendentes="getTarefasPendentes"/>
-    <Formulario/>
-    <lista/>
+    <Cabecalho :tarefas-pendentes="getTarefasPendentes().length"/>
+    <Formulario :trocar-filtro="evento=>estado.filtro = evento.target.value" :tarefa-temporaria="estado.tarefaTemporaria" :editaTarefaTemporaria="evento => estado.tarefaTemporaria = evento.target.value" :cadastra-tarefas="cadastraTarefa"/>
+    <lista :tarefas="getTarefasFiltradas()"/>
   </div>
 </template>
 
-<style scoped>
-.done{
-  text-decoration: line-through;
-}
-</style>
